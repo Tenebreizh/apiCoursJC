@@ -14,5 +14,11 @@
 */
 
 $router->get('/', function () use ($router) {
-    return file_get_contents(base_path() . "/resources/json.json");
+    $path = base_path() . "/resources/meteo.json";
+    return file_get_contents($path);
+});
+
+$router->get('/download', function () use ($router) {
+    $path = base_path() . "/resources/meteo.json";
+    return response()->download($path);
 });
